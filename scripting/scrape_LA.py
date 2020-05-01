@@ -1,6 +1,38 @@
 from bs4 import BeautifulSoup
 import requests
-from requests_html import HTMLSession
+import database_struct as ds
+
+def insert_neighborhood(table):
+
+    names = []
+    #Looking names of neighborhoods
+    for element in table[45:-1]:
+        names.append(element[0])
+
+    #Create objects and inserting
+    city = ds.City.create(name='Los Angeles')
+    for cities in names:
+        ds.Neighborhoods.create(name=cities, city=city)
+
+
+def insert_data(table):
+    
+    #Uncomment if neighborhoods does not exist
+    insert_neighborhood(table)
+
+    #Inserting data into Statistics by City
+    cases_city = table[1][1]
+    deaths_city = table[6][1]
+    city = ds.City.get(ds.City.name == 'Los Angeles')
+    ds.Statistics_by_City.create(cases=cases_city,deaths=deaths_city, city=city)
+
+    #Inserting data into Statistics by Neighborhoods
+    for element in table[45:-1]:
+        name_neigh = ds.Neighborhoods.get(ds.Neighborhoods.name == element[0])
+        cases_neigh = element[1]
+        ds.Statistics_by_Neighborhood.create(cases=cases_neigh, 
+                                                        neighborhood=name_neigh)
+
 
 def los_angeles():
 
@@ -23,21 +55,21 @@ def los_angeles():
             for tr in table.find_all('tr'):
                 rows = [td.text for td in tr.find_all('td')]
                 elements_of_table.append(rows)
+            
+            try:
+                insert_data(elements_of_table)
+            except:
+                print("Error around conexion to data base")
+            
 
-            for item in elements_of_table:
-                print(item)
-
-
-            print("Total cases:", elements_of_table[1][1])
-            print("Total Deaths:", elements_of_table[6][1])
         else:
-            pass
+            print("L.A. server is unreachable")
 
     
     except AttributeError:
         print("L.A. HTML code was changed")
     except:
-        print("L.A. server is unreachable")
+        print("Another Error")
   
 
 if __name__ == '__main__':

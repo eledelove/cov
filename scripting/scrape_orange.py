@@ -1,6 +1,36 @@
 from bs4 import BeautifulSoup
 import requests
-from requests_html import HTMLSession
+import database_struct as ds
+
+def insert_neighborhood(table):
+
+    names = []
+    #Looking for names
+    for element in table[1:-4]:
+        names.append(element[0])
+    
+    #Create objects and inserting
+    city = ds.City.create(name='Orange')
+    for cities in names:
+        ds.Neighborhoods.create(name=cities, city=city)
+
+def insert_data(table):
+
+    #Uncomment if neighborhoods does not exist
+    #insert_neighborhood(table)
+
+    #Inserting data into Statistics by City
+    cases_city = table[-2][2]
+    deaths_city = table[-1][0]
+    city = ds.City.get(ds.City.name == 'Orange')
+    ds.Statistics_by_City.create(cases=cases_city,deaths=deaths_city, city=city)
+    
+    #Inserting data into Statistics by Neighborhoods
+    for element in table[1:-4]:
+        name_neigh = ds.Neighborhoods.get(ds.Neighborhoods.name == element[0])
+        cases_neigh = element[2]
+        ds.Statistics_by_Neighborhood.create(cases=cases_neigh, 
+                                                        neighborhood=name_neigh)
 
 def orange():
 
@@ -25,26 +55,27 @@ def orange():
                 rows = [td.text for td in tr.find_all('td')]
                 data_in_table.append(rows)
 
-            for item in data_in_table:
-                print(item)
+            
 
             #Looking Total Deaths
             containers = soup.find('div', {'class':'row text-center'})
             table = containers.find('div', {'class':'row'})
             columne = table.find('div', {'class':'col-md-4 col-sm-6 col-xs-12'})
             deaths = columne.find('div', {'class':'panel-body text-center'})
-            deaths = deaths.h1.text
+            d = [deaths.h1.text]
+            data_in_table.append(d)
 
-            print("Total Cases:", data_in_table[-1][2])
-            print("Total Deaths:", deaths)
-
+            try:
+                insert_data(data_in_table)
+            except:
+                print("Error around conexion to data base")
         else:
-            pass
+            print("L.A. server is unreachable")
 
     except AttributeError:
         print("Orange HTML code was changed")
     except:
-        print("Orange server is unreachable")
+        print("Another Error")
 
     
 
