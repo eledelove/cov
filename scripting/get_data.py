@@ -13,7 +13,14 @@ def search_data(city, neighborhood, year, month, day):
                                         (ds.Statistics_by_City.city == city_obj) 
                                         & (ds.Statistics_by_City.date == date))
     except:
-        return {'city':'Not'}
+        response = {
+            'city':city,
+            'cases':'No data',
+            'deaths':'No data',
+            'neighborhood':neighborhood,
+            'cases_neigh':'No data'
+        }
+        return response
     
 
     #Getting data by neighborhood
@@ -24,7 +31,14 @@ def search_data(city, neighborhood, year, month, day):
                         (ds.Statistics_by_Neighborhood.neighborhood == neigh) & 
                                 (ds.Statistics_by_Neighborhood.date == date))
     except:
-        return {'neighborhood':'Not'}
+        response = {
+            'city':city_obj.name,
+            'cases':data_city.cases,
+            'deaths':data_city.deaths,
+            'neighborhood': neighborhood,
+            'cases_neigh':'No data'
+        }
+        return response
 
     
     response = {

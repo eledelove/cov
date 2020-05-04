@@ -6,13 +6,13 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    return render_template('ajax.html')
+    return render_template('index.html')
 
 @app.route('/get_data.py', methods=['POST'])
 def ajx():
   
     city = request.form['city']
-    neigh = request.form['neigh']
+    neigh = request.form['neighborhood']
     year = int(request.form['year'])
     month = int(request.form['month'])
     day = int((request.form['day']))

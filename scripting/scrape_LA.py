@@ -18,7 +18,7 @@ def insert_neighborhood(table):
 def insert_data(table):
     
     #Uncomment if neighborhoods does not exist
-    insert_neighborhood(table)
+    #insert_neighborhood(table)
 
     #Inserting data into Statistics by City
     cases_city = table[1][1]
