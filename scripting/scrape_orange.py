@@ -5,7 +5,7 @@ import database_struct as ds
 def insert_neighborhood(table):
 
     names = []
-    #Looking for names
+    #Looking for names ¡First check the table before insert¡
     for element in table[1:-4]:
         names.append(element[0])
     
@@ -22,15 +22,23 @@ def insert_data(table):
     #Inserting data into Statistics by City
     cases_city = table[-2][2]
     deaths_city = table[-1][0]
-    city = ds.City.get(ds.City.name == 'Orange')
-    ds.Statistics_by_City.create(cases=cases_city,deaths=deaths_city, city=city)
+    try:
+        city = ds.City.get(ds.City.name == 'Orange')
+        ds.Statistics_by_City.create(cases=cases_city,deaths=deaths_city,
+                                                                    city=city)
+    except:
+        print("Can't insert County Orange into database")
+        pass
     
     #Inserting data into Statistics by Neighborhoods
-    for element in table[1:-4]:
-        name_neigh = ds.Neighborhoods.get(ds.Neighborhoods.name == element[0])
-        cases_neigh = element[2]
-        ds.Statistics_by_Neighborhood.create(cases=cases_neigh, 
+    for element in table:
+        try:
+            name_neigh = ds.Neighborhoods.get(ds.Neighborhoods.name==element[0])
+            cases_neigh = element[2]
+            ds.Statistics_by_Neighborhood.create(cases=cases_neigh, 
                                                         neighborhood=name_neigh)
+        except:
+            pass
 
 def orange():
 
@@ -59,8 +67,8 @@ def orange():
 
             #Looking Total Deaths
             containers = soup.find('div', {'class':'row text-center'})
-            table = containers.find('div', {'class':'row'})
-            columne = table.find('div', {'class':'col-md-4 col-sm-6 col-xs-12'})
+            table = containers.find_all('div', {'class':'row'})
+            columne = table[1].find('div', {'class':'col-md-6 col-sm-6 col-xs-12'})
             deaths = columne.find('div', {'class':'panel-body text-center'})
             d = [deaths.h1.text]
             data_in_table.append(d)
@@ -68,7 +76,7 @@ def orange():
             try:
                 insert_data(data_in_table)
             except:
-                print("Error around conexion to data base")
+               print("Error around conexion to data base for Orange")
         else:
             print("L.A. server is unreachable")
 
@@ -76,8 +84,6 @@ def orange():
         print("Orange HTML code was changed")
     except:
         print("Another Error")
-
-    
-
+     
 if __name__ == '__main__':
     orange()

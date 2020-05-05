@@ -22,6 +22,8 @@ class BaseModel(Model):
 
 class City(BaseModel):
     name = CharField(unique=True)
+    latitude = CharField()
+    longitude = CharField()
 
 class Statistics_by_City(BaseModel):
     cases = CharField(default='0')
@@ -31,6 +33,8 @@ class Statistics_by_City(BaseModel):
 
 class Neighborhoods(BaseModel):
     name = CharField(unique=True)
+    latitude = CharField()
+    longitude = CharField()
     city = ForeignKeyField(City, backref='neighborhoods')
 
 class Statistics_by_Neighborhood(BaseModel):

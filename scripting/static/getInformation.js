@@ -1,8 +1,16 @@
 //Script to obtain information on the county and city selected from the map
 function getInformation(results, date){
-
+    console.log(results);
     //Get the city
-    var city = results[0].address_components[2].long_name;
+    for (var i= 0; i < results.length; i++) {
+        if(results[i].types[0]=="neighborhood"){
+            var city = results[i].address_components[0].long_name;
+            break;
+        }
+        else if(results[i].types[0]=="locality"){
+            var city = results[i].address_components[0].long_name;
+        }     
+    }
     //Get the county
     var county = results[0].address_components[3].long_name;
     county = county.replace(" County", "");

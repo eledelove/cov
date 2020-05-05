@@ -5,8 +5,8 @@ import database_struct as ds
 def insert_neighborhood(table):
 
     names = []
-    #Looking names of neighborhoods
-    for element in table[45:-1]:
+    #Looking names of citites/neighborhoods
+    for element in table[49:-1]:
         names.append(element[0])
 
     #Create objects and inserting
@@ -21,18 +21,28 @@ def insert_data(table):
     #insert_neighborhood(table)
 
     #Inserting data into Statistics by City
-    cases_city = table[1][1]
-    deaths_city = table[6][1]
-    city = ds.City.get(ds.City.name == 'Los Angeles')
-    ds.Statistics_by_City.create(cases=cases_city,deaths=deaths_city, city=city)
+    for element in table:
+        if(element[0] == 'Laboratory Confirmed Cases (LCC)'):
+            cases_city = element[1]
+        if(element[0] == 'Deaths'):
+            deaths_city = element[1]
+    try:
+        city = ds.City.get(ds.City.name == 'Los Angeles')
+        ds.Statistics_by_City.create(cases=cases_city,deaths=deaths_city,
+                                                                    city=city)
+    except:
+        print("Can't insert County L.A into database")
+        pass
 
     #Inserting data into Statistics by Neighborhoods
-    for element in table[45:-1]:
-        name_neigh = ds.Neighborhoods.get(ds.Neighborhoods.name == element[0])
-        cases_neigh = element[1]
-        ds.Statistics_by_Neighborhood.create(cases=cases_neigh, 
+    for element in table:
+        try:
+            name_neigh = ds.Neighborhoods.get(ds.Neighborhoods.name==element[0])
+            cases_neigh = element[1]
+            ds.Statistics_by_Neighborhood.create(cases=cases_neigh, 
                                                         neighborhood=name_neigh)
-
+        except:
+            pass
 
 def los_angeles():
 
@@ -59,7 +69,7 @@ def los_angeles():
             try:
                 insert_data(elements_of_table)
             except:
-                print("Error around conexion to data base")
+                print("Error around conexion to data base for L.A.")
             
 
         else:
@@ -69,7 +79,7 @@ def los_angeles():
     except AttributeError:
         print("L.A. HTML code was changed")
     except:
-        print("Another Error")
+        print("Another Error in L.A.")
   
 
 if __name__ == '__main__':

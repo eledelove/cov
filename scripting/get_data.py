@@ -1,5 +1,36 @@
 import database_struct as ds
 import datetime
+import json
+
+def get_initial_data():
+
+    date = datetime.date.today()
+    #Get all counties
+    counties = ds.City.select()
+    lista = []
+    
+    #adding all data in a list
+    for i in counties:
+        data = ds.Statistics_by_City.get((ds.Statistics_by_City.city == i) & 
+                                        (ds.Statistics_by_City.date == date))
+        d = {'county':i.name, 'cases':data.cases, 'deaths':data.deaths, 
+                                'latitude':i.latitude, 'longitude':i.longitude}
+        lista.append(d)
+
+    lista_n = []
+    #Get all cities and neighborhoods
+    neighs = ds.Neighborhoods.select()
+    for i in neighs:
+        data = ds.Statistics_by_Neighborhood.get(
+                            (ds.Statistics_by_Neighborhood.neighborhood == i) & 
+                            (ds.Statistics_by_Neighborhood.date == date))
+        d = {'city':i.name, 'cases':data.cases, 'deaths':data.deaths, 
+                                'latitude':i.latitude, 'longitude':i.longitude}
+        lista_n.append(d)
+
+    dictio = {'counties':lista, 'cities':lista_n}
+
+    return json.dumps(dictio)
 
 
 def search_data(city, neighborhood, year, month, day):
