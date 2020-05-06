@@ -9,8 +9,10 @@ def hello():
     return render_template('index.html')
 
 @app.route('/get_initial_data')
-def data:
-    return "Hola"
+def data():
+
+    response = gd.get_initial_data()
+    return response
 
 @app.route('/get_data.py', methods=['POST'])
 def ajx():
