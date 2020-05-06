@@ -8,6 +8,10 @@ app = Flask(__name__)
 def hello():
     return render_template('index.html')
 
+@app.route('/get_initial_data')
+def data:
+    return "Hola"
+
 @app.route('/get_data.py', methods=['POST'])
 def ajx():
   
