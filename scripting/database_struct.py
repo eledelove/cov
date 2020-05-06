@@ -7,8 +7,8 @@ import os
 data_base = "covid_california"
 host = "localhost"
 port = 3306
-username = "alex"
-password = "alexuama"
+username = "hesparza"
+password = "29194303"
 
 #Creating data base ¡Uncomment only if you want to create the data base!-------
 #os.system("echo \"create database "+data_base+";\" | mysql --user="+username+
