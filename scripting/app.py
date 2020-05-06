@@ -8,9 +8,8 @@ app = Flask(__name__)
 def hello():
     return render_template('index.html')
 
-@app.route('/get_initial_data')
+@app.route('/get_initial_data', methods=['POST'])
 def data():
-
     response = gd.get_initial_data()
     return response
 
