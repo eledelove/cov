@@ -6,30 +6,39 @@ def get_initial_data():
 
     date = datetime.date.today()
     #Get all counties
-    counties = ds.City.select()
     lista = []
-    
-    #adding all data in a list
-    for i in counties:
-        data = ds.Statistics_by_City.get((ds.Statistics_by_City.city == i) & 
+    try:
+        counties = ds.City.select()
+        #adding all data in a list
+        for i in counties:
+            data = ds.Statistics_by_City.get((ds.Statistics_by_City.city == i) & 
                                         (ds.Statistics_by_City.date == date))
-        d = {'county':i.name, 'cases':data.cases, 'deaths':data.deaths, 
+            d = {'county':i.name, 'cases':data.cases, 'deaths':data.deaths, 
                                 'latitude':i.latitude, 'longitude':i.longitude}
+            lista.append(d)
+    except:
+        d = {'county':'No data'}
         lista.append(d)
 
     lista_n = []
+    max_cases = []
     #Get all cities and neighborhoods
-    neighs = ds.Neighborhoods.select()
-    for i in neighs:
-        data = ds.Statistics_by_Neighborhood.get(
+    try:
+        neighs = ds.Neighborhoods.select()
+        for i in neighs:
+            data = ds.Statistics_by_Neighborhood.get(
                             (ds.Statistics_by_Neighborhood.neighborhood == i) & 
-                            (ds.Statistics_by_Neighborhood.date == date))
-        d = {'city':i.name, 'cases':data.cases, 'deaths':data.deaths, 
+                                (ds.Statistics_by_Neighborhood.date == date))
+            d = {'city':i.name, 'cases':data.cases, 'deaths':data.deaths, 
                                 'latitude':i.latitude, 'longitude':i.longitude}
+            max_cases.append(int(data.cases))
+            lista_n.append(d)
+    except:
+        d = {'city':'No data'}
         lista_n.append(d)
 
-    dictio = {'counties':lista, 'cities':lista_n}
 
+    dictio = {'counties':lista, 'cities':lista_n, 'max_cases':max(max_cases)}
     return json.dumps(dictio)
 
 
