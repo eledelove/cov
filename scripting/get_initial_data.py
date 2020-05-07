@@ -33,10 +33,14 @@ def get_initial_data():
                                 'latitude':i.latitude, 'longitude':i.longitude}
             max_cases.append(int(data.cases))
             lista_n.append(d)
+        num_max = max(max_cases)
+        max_cases.remove(num_max)
+        second_max = max(max_cases)
     except:
         d = {'city':'No data'}
         lista_n.append(d)
 
 
-    dictio = {'counties':lista, 'cities':lista_n, 'max_cases':max(max_cases)}
+    dictio = {'counties':lista, 'cities':lista_n, 'max_cases':num_max, 
+                                                'second_max_cases':second_max}
     return json.dumps(dictio)
