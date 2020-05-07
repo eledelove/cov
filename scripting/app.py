@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import json
 import get_data as gd
+import get_initial_data as gid
 
 app = Flask(__name__)
 
@@ -8,9 +9,9 @@ app = Flask(__name__)
 def hello():
     return render_template('index.html')
 
-@app.route('/get_initial_data', methods=['POST'])
+@app.route('/get_initial_data.py', methods=['POST'])
 def data():
-    response = gd.get_initial_data()
+    response = gid.get_initial_data()
     return response
 
 @app.route('/get_data.py', methods=['POST'])
