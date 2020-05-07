@@ -7,7 +7,7 @@ function getInitialData(){
     type: "POST", //The type of transaction for the data
     dataType: "json", //We will specify what data we will send
     contentType: "application/x-www-form-urlencoded", //We will specify the content type
-    url: "get_initial_data", //It will be the file that will process the AJAX request
+    url: "get_initial_data.py", //It will be the file that will process the AJAX request
     beforeSend: startSend, //Function that runs before the transaction begins
     success: arrival, //Function that is executed in case of success
     timeout: 4000,//Wait time
@@ -22,9 +22,9 @@ function startSend() {
 
 function arrival(data){
     console.log(data);
-
-    
-
+    //var ruote = "{{ url_for('static',filename='getInformation.js') }}";
+    var element = '<script type="text/javascript" src="/static/getInformation.js"></script>';
+    $("body").append(element);
 }
 
 function problems(textError, textStatus) {
