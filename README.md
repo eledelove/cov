@@ -6,6 +6,12 @@ General
 * Programada en Python 3.8.2
 * Base de datos MySQL Ver 8.0.20
 
+* Se utilizaron dos contenedores dockers para el desarrollo de esta aplicacion,
+ambos se comunican entre si.
+
+    1. docker ubuntu para montar la aplicacion dentro de el.
+    2. Docker mysql para tener la base de datos.
+
 Librerías/Frameworks (instaladas a través de pip3 de python)
 
 * BeautifulSoup4
@@ -15,8 +21,8 @@ Librerías/Frameworks (instaladas a través de pip3 de python)
 * mysqlclient
 * peewe
 * Flask
-* json
-* datetime
+* json (libreria estandar)
+* datetime (librerias estandar)
 
 Archivos python
 
@@ -53,6 +59,11 @@ Archivos python
     nes del frontend. En pocas palabras realiza búsquedas dentro de la base de
     datos y regresa los resultados de dichas búsquedas.
 
+* get_initial_data.py
+    * Este script se encarga de responder al evento de javascript cuando carga
+    la pagina por primera vez. Hace una consulta a la base de datos, extrayendo
+    todos los datos y los manda al frontend.
+
 * insert_latitude_longitude
     * Este script es opcional y solo funciona con una ejecución individual, si
     se registran nuevos vecindarios en la base de datos y se tienen sus latitu-
@@ -62,8 +73,8 @@ Archivos python
 
     Los datos los lee de un archivo el cual se debe de especificar en la varia-
     ble name, y la nomeclatura del aricho debe ser nombre ciudad/vecindario,
-    latitud, longitud. Como se observa, los datos deben de estar separados por
-    coma.
+    latitud, longitud Como se observa, los datos deben de estar separados por
+    coma. El archivo debe de estar en el mismo path que este script.
 
 * covid-19.py
     * Este es el script principal que ejecuta a a scrape_LA y scrape_orange
