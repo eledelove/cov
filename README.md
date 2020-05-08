@@ -24,6 +24,12 @@ Librerías/Frameworks (instaladas a través de pip3 de python)
 * json (libreria estandar)
 * datetime (librerias estandar)
 
+Librerías/Frameworks (invocadas desde el archivo index.html)
+
+* Bootstrap (versión 4.4.1)
+* Jquery (versión 3.3.1)
+* Jquery UI (versión 1.12.1)
+
 Archivos python
 
 * database_struct
@@ -79,3 +85,59 @@ Archivos python
 * covid-19.py
     * Este es el script principal que ejecuta a a scrape_LA y scrape_orange
     este script está contenido en un crontab para su ejecucion automática.
+
+Archivos html
+
+* index.html
+    * Este archivo es el encargado de cargar la interfaz de la aplicación dentro
+    del navegador web para que el usuario interactúe con ella.
+    Además se encarga de llamar a los scripts que serán los encargados de 
+    realizar peticiones al servidor, para posteriormente visualizar los datos
+    en la interfaz.
+    
+Archivos css
+
+* style.css
+    * Este archivo se encarga de dar un estilo a los elementos que viven en el
+    html de la página.
+
+Archivos JavaScript
+
+* date.js
+    * Este archivo es el encargado de obtener la fecha del día de hoy, para
+    mostrarla dentro del input dónde el usuario podrá seleccionar diferentes 
+    fechas para las consultas.
+
+* getInformation.js
+    * Este archivo es el encargado de realizar una petición al servidor para 
+    poder mostrar la información asociada a cada ciudad en función a dónde 
+    el usuario realice un click dentro del mapa. Una vez que se obtenga la
+    información, se lanzará una ventana emergente que contendrá una tabla
+    con la información devuelta.
+
+* getInitialData.js
+    * Este archivo es el encargado de realizar una petición al servidor para 
+    poder obtener la información asociada a todas las ciudades que viven en la
+    base de datos. Posteriormente estará llamando a paintPoints.js, 
+    paintMessage.js y paintTable.js
+
+* initMap.js
+    * Este archivo es el encargado de dibujar el mapa dentro del documento
+    html. Dentro de este archivo se encuentra un escuchador de evento el cual 
+    se activará cuando el usuario de click dentro del poligono dibujado en el 
+    mapa, a su vez se estarán obteniendo las coordenadas de latitud y longitud
+    para dicho punto que se haya seleccionado. Por último este archivo manda 
+    llamar al archivo getInformation.js
+
+* paintMessage.js
+    * Es el archivo encargado de obtener el día y la fecha de hoy para poder
+    enciarle esa información al archivo paintTable.js.
+
+* paintPoints.js
+    * Este archivo es el encargado de dibujar los marcadores asociados a cada
+    ciudad, esto en función al número de casos que se registran dentro de 
+    cada ciudad.
+
+* paintTable.js
+    * Este archivo es el encargado de añadir una tabla con la información
+    asociada a cada condado que se tiene registrado en la base de datos.

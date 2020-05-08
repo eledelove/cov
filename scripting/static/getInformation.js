@@ -1,19 +1,25 @@
 //Script to obtain information on the county and city selected from the map
 function getInformation(results, date){
-    console.log(results);
-    //Get the city
+    //Initializing without data
+    var neighborhood = "no data";
+    var city = "no data";
+    var county = "no data";
     for (var i= 0; i < results.length; i++) {
+        //Get the neighborhood
         if(results[i].types[0]=="neighborhood"){
-            var city = results[i].address_components[0].long_name;
-            break;
+            neighborhood = results[i].address_components[0].long_name;
         }
+        //Get the locality
         else if(results[i].types[0]=="locality"){
-            var city = results[i].address_components[0].long_name;
-        }     
+            city = results[i].address_components[0].long_name;
+        }
+        //Get the county
+        else if(results[i].types[0]=="administrative_area_level_2"){
+            county = results[i].address_components[0].long_name;
+            county = county.replace("Condado de ", "");
+            county = county.replace("County ", "");
+        }
     }
-    //Get the county
-    var county = results[0].address_components[3].long_name;
-    county = county.replace(" County", "");
     //Divide the date into day, month and year
     var auxiliaryDate = date.split("-");
     var day = auxiliaryDate[2];
@@ -25,11 +31,11 @@ function getInformation(results, date){
         year: year,
         month: month,
         day: day,
-        neighborhood: city,
+        neighborhood: neighborhood,
+        locality: city,
         city: county
 
     }
-    console.log(parameters);
     $.ajax({
     async: true, //Activate asynchronous transfer
     type: "POST", //The type of transaction for the data
@@ -52,7 +58,7 @@ function startSend() {
 function arrival(data){
     console.log(data);
 
-    
+    //Dynamically building the table
     var table = '<table class="table table-bordered table-hover">'+
                         '<thead class="thead-dark">'+
                             '<tr>'+
@@ -89,6 +95,7 @@ function arrival(data){
                         '</tbody>'+
                     '</table>';
     
+        //Show information in a popup window           
         $("#information").empty();
         $("#information").append(table);
         $("#information").dialog(

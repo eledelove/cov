@@ -21,11 +21,13 @@ function startSend() {
 }
 
 function arrival(data){
-    console.log(data);
-    
+    //Function to draw markers
     paintPoints(map, data);
-    paintTable(data);
-    paintMessage($("#date").val());
+    //Get the date and day
+    var date = paintMessage($("#date").val());
+    //Get a table dynamically for county information
+    paintTable(data, date);
+    //Send call script once the page is loaded
     var element = '<script type="text/javascript" src="/static/getInformation.js"></script>';
     $("body").append(element);
 }
