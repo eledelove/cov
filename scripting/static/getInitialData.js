@@ -22,7 +22,10 @@ function startSend() {
 
 function arrival(data){
     console.log(data);
-    //var ruote = "{{ url_for('static',filename='getInformation.js') }}";
+    
+    paintPoints(map, data);
+    paintTable(data);
+    paintMessage($("#date").val());
     var element = '<script type="text/javascript" src="/static/getInformation.js"></script>';
     $("body").append(element);
 }

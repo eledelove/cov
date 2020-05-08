@@ -2,11 +2,11 @@ body{
     background-color: #444242;
 }
 
-h1{
+h1,h3{
     color: #FFFFFF;
 }
 
-th{
+th, tr{
     text-align: center;
 }
 

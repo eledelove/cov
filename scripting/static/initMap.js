@@ -1,19 +1,16 @@
+var map = "";
+var coordinates = "";
 function initMap(){
     
     //Map created from Caifornia
-    var coordinates = {lat: 37.2502200, lng: -119.7512600};
-    var map = new google.maps.Map(document.getElementById('map'), {
+    coordinates = {lat: 37.2502200, lng: -119.7512600};
+    map = new google.maps.Map(document.getElementById('map'), {
         zoom: 5.9,
         streetViewControl: false,
 	    fullscreenControl: true,
 	    clickableIcons: false,
         keyboardShortcuts: false,
         center: coordinates
-    });
-    
-    var marker = new google.maps.Marker({
-        position: coordinates,
-        map: map
     });
 
     //Main region California
