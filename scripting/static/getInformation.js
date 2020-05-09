@@ -17,7 +17,7 @@ function getInformation(results, date){
         else if(results[i].types[0]=="administrative_area_level_2"){
             county = results[i].address_components[0].long_name;
             county = county.replace("Condado de ", "");
-            county = county.replace("County ", "");
+            county = county.replace(" County", "");
         }
     }
     //Divide the date into day, month and year
