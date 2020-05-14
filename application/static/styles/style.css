@@ -1,0 +1,37 @@
+/*Background color for the index*/
+body{
+    background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+/* Font color for headings */
+h1,h3, h6{
+    color: #FFFFFF;
+}
+/* Align text in the rows of a table */
+th, tr{
+    text-align: center;
+}
+/* Style of the container that will have the map */
+#map{
+    width: 100%;
+    height: 800px;
+    background-color: grey;
+    border: white 8px groove;
+}
+
+#clickOver{
+    color: yellow;
+}
+
+#message{
+    color: greenyellow;
+}
+
+.encabezadoTabla{
+    color: #FFFFFF;
+    background-color: #E95420;
+}
+
+.cuerpoTabla{
+    color: #E95420;
+}

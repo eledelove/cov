@@ -1,0 +1,86 @@
+City of Agoura Hills,34.155077,-118.761650
+City of Alhambra,34.097650,-118.126896
+City of Arcadia,34.142492,-118.035381
+City of Artesia,33.866811,-118.083241
+City of Avalon,33.343387,-118.328118
+City of Azusa,34.135669,-117.907906
+City of Baldwin Park,34.086266,-117.960605
+City of Bell,33.978455,-118.187063
+City of Bell Gardens,33.966228,-118.151423
+City of Bellflower,33.883339,-118.117238
+City of Beverly Hills,34.074229,-118.400092
+City of Bradbury,34.147642,-117.970922
+City of Burbank,34.183424,-118.309159
+City of Calabasas,34.137966,-118.660888
+City of Carson,33.834426,-118.281589
+City of Cerritos,33.859835,-118.064947
+City of Claremont,34.100309,-117.719090
+City of Commerce,34.002617,-118.160110
+City of Compton,33.897331,-118.220114
+City of Covina,34.091277,-117.890199
+City of Cudahy,33.961359,-118.185654
+City of Culver City,34.022338,-118.396192
+City of Diamond Bar,34.030416,-117.809812
+City of Downey,33.941944,-118.133170
+City of Duarte,34.140997,-117.977291
+City of El Monte,34.070313,-118.027097
+City of El Segundo,33.920596,-118.416049
+City of Gardena,33.890718,-118.308113
+City of Glendale,34.145970,-118.255981
+City of Glendora,34.137216,-117.865569
+City of Hawaiian Gardens,33.832208,-118.072806
+City of Hawthorne,33.917967,-118.353503
+City of Hermosa Beach,33.863005,-118.399509
+City of Hidden Hills,34.165359,-118.664908
+City of Huntington Park,33.984354,-118.224871
+City of Industry,34.022071,-117.958507
+City of Inglewood,33.962970,-118.353196
+City of Irwindale,34.108794,-117.935644
+City of La Canada Flintridge,34.210427,-118.200123
+City of La Habra Heights,33.966283,-117.949616
+City of La Mirada,33.919453,-118.010698
+City of La Puente,34.020669,-117.949085
+City of La Verne,34.102566,-117.767149
+City of Lakewood,33.855380,-118.133823
+City of Lancaster,34.693646,-118.154338
+City of Lawndale,33.888137,-118.352528
+City of Lomita,33.793491,-118.3169047
+City of Lynwood,33.931337,-118.211686
+City of Malibu,34.030986,-118.779269
+City of Manhattan Beach,33.886505,-118.410244
+City of Maywood,33.987663,-118.185470
+City of Monrovia,34.145428,-118.001392
+City of Montebello,34.018563,-118.113871
+City of Monterey Park,34.065143,-118.122448
+City of Norwalk,33.903887,-118.081752
+City of Palmdale,34.584217,-118.116543
+City of Palos Verdes Estates,33.802066,-118.390453
+City of Paramount,33.890675,-118.159977
+City of Pico Rivera,33.985045,-118.096898
+City of Pomona,34.057044,-117.749515
+City of Rancho Palos Verdes,33.746242,-118.387220
+City of Redondo Beach,33.851299,-118.388299
+City of Rolling Hills,33.757987,-118.354056
+City of Rolling Hills Estates,33.789482,-118.358224
+City of Rosemead,34.082155,-118.072716
+City of San Dimas,34.110405,-117.807778
+City of San Fernando,34.283259,-118.439544
+City of San Gabriel,34.096670,-118.106004
+City of San Marino,34.122365,-118.105785
+City of Santa Clarita,34.395111,-118.544072
+City of Santa Fe Springs,33.950580,-118.086567
+City of Santa Monica,34.020739,-118.491352
+City of Sierra Madre,34.162396,-118.052659
+City of Signal Hill,33.805302,-118.168209
+City of South El Monte,34.053242,-118.046994
+City of South Gate,33.956345,-118.211494
+City of South Pasadena,34.117290,-118.150306
+City of Temple City,34.108174,-118.056533
+City of Torrance,33.837448,-118.340352
+City of Vernon,34.005349,-118.229801
+City of Walnut,34.021975,-117.865523
+City of West Covina,34.070635,-117.9423547
+City of West Hollywood,34.091236,-118.361653
+City of Westlake Village,34.148535,-118.807523
+City of Whittier,33.983692,-118.033333
+Los Angeles,34.053960,-118.244612

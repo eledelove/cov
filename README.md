@@ -1,4 +1,5 @@
-# cov
+# surcalifas_covid19
+visualizacion del sur de california
 
 General
 
@@ -141,3 +142,78 @@ Archivos JavaScript
 * paintTable.js
     * Este archivo es el encargado de añadir una tabla con la información
     asociada a cada condado que se tiene registrado en la base de datos.
+
+* CARPETA "insert_new_data"
+
+Esta carpeta contiene los scripts para agregar nuevos condados con sus localidades
+y otro script para actuaizar la base de datos.
+
+1   1. insert_new_county.py
+    * Este script agrega a la base de datos un nuevo condado con sus ciudades
+    basta con editar o sobreescribir el archivo llamado "new_county.txt" es impor-
+    tante mantener este nombre y extension. El archivo debe construirse de la
+    siguiente manera
+
+    Los Angeles
+    City of Agoura Hills,34.155077,-118.761650
+    City of Alhambra,34.097650,-118.126896
+    City of Arcadia,34.142492,-118.035381
+    City of Artesia,33.866811,-118.083241
+
+    En la primer linea debe de ir el nombre del NUEVO condado
+    en las siguinetes lineas deberan de ir los nombres de sus localidades seguido
+    de la longitud, y latidud separador por comas.
+
+    ¡NOTA: este script solo se ejecuta solo cuando se requiera agregar nuevos
+    condados y vecindarios datos a la base de datos!
+
+    2. update_data.py
+    * Este script actualiza la base de datos con nueva información, para esto
+    ya debe de existir el condado y las localidades a las cuales se les quiere
+    actualizar información. Este modulo lee el archivo "new_data.txt" Es importante
+    mantener el nombre y la extension de este archivo. La nomeclatura es la siguiente.
+
+    Condado,casos,muertes
+    ciudad1,casos
+    ciudad2,casos
+
+    Ejemplo:
+
+    Los Angeles,40896,5000
+    City of Agoura Hills,755
+    City of Alhambra,85
+    City of Arcadia,99
+    City of Artesia,43
+
+    En la primer linea va el condado, el total de casos y el total de sus muertes
+    separados por coma.
+
+    En las sigueintes lineas van las ciudades/localidades/vecindarios/ de ese
+    condado junto con los casos de cada uno. Separados por coma.
+
+    NOTA: Este script se puede ejecutar diario para alimenatar la base de datos.
+
+    3. add_cities.py
+    * Este script agrega la base de datos nuevas ciudades/vecindarios de un
+    condado ya existente, es muy similar al script insert_new_county.py pero la
+    lógica cambia un poco. Se lee la información del archivo llamado add_cities.py
+    y su nomeclatura es la siguiente
+
+    condado
+    ciudad,longitud,latitud
+    ciudad,longitud,latitud
+    ciudad,longitud,latitud
+
+    Ejemplo:
+
+    Los Angeles
+    City of Agoura Hills,34.155077,-118.761650
+    City of Alhambra,34.097650,-118.126896
+    City of Arcadia,34.142492,-118.035381
+    City of Artesia,33.866811,-118.083241
+
+    Como se observa los datos están separados por una coma, es importante respetar
+    este formato para el correcto funcionamiento.
+
+    Si una ciudad ya existiera, y se escribiera por error en este archivo, no es 
+    causa de ningun error. Sólo se ignoraría.
