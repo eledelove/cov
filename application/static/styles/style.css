@@ -23,7 +23,7 @@ th, tr{
     color: yellow;
 }
 
-#message{
+.dateColor{
     color: greenyellow;
 }
 
@@ -34,4 +34,16 @@ th, tr{
 
 .cuerpoTabla{
     color: #E95420;
+}
+
+.borderColor{
+    border: #57838d 5px solid;
+}
+
+.titlesColor{
+    color: #8fcaca;
+}
+
+.alertColor{
+    color: #FF0000;
 }

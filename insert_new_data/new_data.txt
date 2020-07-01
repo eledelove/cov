@@ -1,5 +1,9 @@
-Los Angeles,40896,5000
-City of Agoura Hills,755
-City of Alhambra,85
-City of Arcadia,99
-City of Artesia,43
+Santa Barbara,1971,18
+Santa Barbara,131,2
+Goleta,20,2
+Isla Vista,3,0
+Santa Ynez,13,0
+Lompoc,113,4
+Federal Prison,985,3
+Santa Maria,528,5
+Orcutt,56,0

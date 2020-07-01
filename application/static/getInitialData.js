@@ -2,28 +2,13 @@ window.addEventListener('load', getInitialData);
 
 //Script to obtain information on all counties and cities
 function getInitialData(){
-    //Divide the date into day, month and year
-    var date=$("#date").val();
-    var auxiliaryDate = date.split("-");
-    var day = auxiliaryDate[2];
-    var month = auxiliaryDate[1];
-    var year = auxiliaryDate[0];
-    //All the parameters that will be sent for the request
-    var parameters =
-    {
-        year: year,
-        month: month,
-        day: day,
-
-    }
 	
     $.ajax({
     async: true, //Activate asynchronous transfer
-    type: "POST", //The type of transaction for the data
+    type: "GET", //The type of transaction for the data
     dataType: "json", //We will specify what data we will send
     contentType: "application/x-www-form-urlencoded", //We will specify the content type
     url: "get_initial_data.py", //It will be the file that will process the AJAX request
-    data:parameters,
     beforeSend: startSend, //Function that runs before the transaction begins
     success: arrival, //Function that is executed in case of success
     timeout: 4000,//Wait time

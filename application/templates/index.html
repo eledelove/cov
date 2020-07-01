@@ -28,14 +28,14 @@
                 <div class="col-sm-12 col-md-12 col-lg-12">
                     <h1>
                         Visualización de casos de Covid-19 en el 
-                        Sur de California, USA.
+                        Sur de California.
                     </h1>
                 </div>
             </div>
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4">
+                <div class="col-sm-6 col-md-4 col-lg-4">
                     <div class="input-group input-group-sm mb-3">
                         <div class="input-group-prepend">
                           <span class="input-group-text" 
@@ -43,8 +43,11 @@
                         </div>
                         <input type="date" id="date" class="form-control" 
                         aria-label="Sizing example input" 
-                        aria-describedby="inputGroup-sizing-sm">
+                        aria-describedby="inputGroup-sizing-md">
                     </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-4">
+                    <input type="button" class="btn btn-sm btn-success" id="getByDate" value="Buscar" />
                 </div>
             </div>
         </div>
@@ -90,8 +93,13 @@
         <script type="text/javascript" src="{{ url_for('static',filename='paintPoints.js') }}"></script>
         <script type="text/javascript" src="{{ url_for('static',filename='paintTable.js') }}"></script>
         <script type="text/javascript" src="{{ url_for('static',filename='paintMessage.js') }}"></script>
-        <script async type="text/javascript"
+        <script type="text/javascript" src="{{ url_for('static',filename='formatNumber.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static',filename='getByDate.js') }}"></script>
+        <!-- <script async type="text/javascript"
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgtDNTNLg5xp_RD8H0R_b5KKK1NR0inQk&callback=initMap">
+        </script> -->
+        <script async type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoaTfhW12RXAT_ybBrEqvCRGHse_FGmb8&callback=initMap">
         </script>
     </body>
 </html>

@@ -8,24 +8,41 @@ function getInformation(results, date){
         //Get the neighborhood
         if(results[i].types[0]=="neighborhood"){
             neighborhood = results[i].address_components[0].long_name;
+            neighborhood = neighborhood.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
         }
         //Get the locality
         else if(results[i].types[0]=="locality"){
             city = results[i].address_components[0].long_name;
+            city = city.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
         }
         //Get the county
         else if(results[i].types[0]=="administrative_area_level_2"){
             county = results[i].address_components[0].long_name;
             county = county.replace("Condado de ", "");
             county = county.replace(" County", "");
-            county = county.replace("Á","A");
+            county = county.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        }
+         //Parse of places
+         if(city=="Lompoc" && 
+         (results[0].address_components[1].long_name=="Klein Boulevard" 
+         || results[0].address_components[0].long_name=="Rancho Lompoc Farm Road")){
+         neighborhood = "Federal Prison";
+        }
+        else if(city=="Riverside" && 
+                (results[0].address_components[1].long_name=="Tenth Street"
+                || results[0].address_components[1].long_name=="Orange Street"
+                || results[0].address_components[1].long_name=="Lemon Street")){
+                neighborhood = "Robert Presley Detention Center";
         }
     }
     //Divide the date into day, month and year
-    var auxiliaryDate = date.split("-");
-    var day = auxiliaryDate[2];
-    var month = auxiliaryDate[1];
-    var year = auxiliaryDate[0];
+    var id = "date"+county;
+    date = document.getElementById(id).innerText;
+    console.log(date);
+    var auxiliaryDate = date.split("/");
+    var day = auxiliaryDate[1];
+    var month = auxiliaryDate[0];
+    var year = auxiliaryDate[2];
     //All the parameters that will be sent for the request
     var parameters =
     {
@@ -37,6 +54,7 @@ function getInformation(results, date){
         city: county
 
     }
+    console.log(parameters);
     $.ajax({
     async: true, //Activate asynchronous transfer
     type: "POST", //The type of transaction for the data
@@ -107,7 +125,7 @@ function arrival(data){
                         '</tbody>'+
                         '<thead class="encabezadoTabla">'+
                             '<tr>'+
-                                '<th colspan=2>Vecindario</th>'+
+                                '<th colspan=2>Lugar o Vecindario</th>'+
                             '</tr>'+
                         '</thead>'+
                         '<tbody>'+

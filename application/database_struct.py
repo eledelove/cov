@@ -5,11 +5,14 @@ import os
 #-----Run this script only if you want to create the data base -----------------
 
 data_base = "covid_california"
-host = "172.17.0.2"
-#host = "localhost"
+#host = "172.17.0.2"
+host = 'localhost'
 port = 3306
-username = "covcalifornia"
-password = "cov19"
+#username = "covcalifornia"
+#password = "cov19"
+username = "lexorxp"
+password = "uamamusic"
+
 
 #Creating data base ¡Uncomment only if you want to create local data base!-------
 #os.system("echo \"create database "+data_base+";\" | mysql --user="+username+

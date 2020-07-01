@@ -1,0 +1,32 @@
+Se desarrollo una aplicación WEB capaz de desplegar información sobre los casos 
+y muertes de COVID-19 dentro de la parte sur de California, USA, específicamente
+dentro de los condados de Los Angeles, Orange, San Bernardino, Riverside y 
+San Diego.
+
+En un principio se implemento un WEB scraping para alimentar la base de datos de
+manera automática una vez por día, ya que se requería mostrar la información a 
+lo largo del tiempo. Posteriormente se implementaron scripts para poder 
+alimentar la base de datos por medio de archivos de texto y así poder tener una 
+solución alterna al WEB scraping.
+
+Con la ayuda de la API Google Maps se logro desplegar el mapa con el que el 
+usuario podrá interactuar con la aplicación, así mismo se utilizo la API Google 
+Geocoding esto para poder obtener la información asociada al punto dónde el 
+usuario daba clic para mostar la información.
+
+El usuario tiene la opción de buscar la información por fecha, la fecha está 
+limitada en un rango desde que se comenzó a alimentar la base de datos, siendo 
+el 05/05/2020 la fecha mínima elegible hasta la fecha en la que se éste 
+ejecutando la aplicación.
+
+La aplicación muestra marcadores dentro del mapa en función al número de casos 
+que posee la ciudad(no todas las ciudades o vecindarios cuentan con estos 
+marcadores, pero el no tener marcador no implica que la ciudad no posea 
+información).
+
+Finalmente la aplicación funciona cuando el usuario presiona clic sobre un 
+punto del mapa, mediante AJAX se enviá una petición para que se devuelva i
+nformación de la ciudad que se recupero con ayuda de la API Geocoding, el 
+servidor procesa la petición y devuelve los datos para poder mostrarlos en una 
+ventana emergente.
+

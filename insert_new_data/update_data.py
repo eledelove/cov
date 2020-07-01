@@ -27,7 +27,8 @@ for i in lista:
     try:
         name_neigh = ds.Neighborhoods.get(ds.Neighborhoods.name==element[0])
         cases_neigh = element[1]
+        deaths_neigh = element[2]
         ds.Statistics_by_Neighborhood.create(cases=cases_neigh, 
-                                                    neighborhood=name_neigh)
+                                neighborhood=name_neigh, deaths=deaths_neigh)
     except:
         pass

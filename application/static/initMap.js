@@ -16,8 +16,8 @@ function initMap(){
     //Main region Southern California
     //coordinates that will be the vertices
     var verticesCoordinates = [            
-        {lat: 34.577323, lng: -120.6527367},
-        {lat: 35.001860, lng: -114.633489},
+        {lat: 35.251365, lng: -120.898685},
+        {lat: 35.826938, lng: -115.670632},
         {lat: 34.261143, lng: -114.132649},
         {lat: 32.757126, lng: -114.526891},
         {lat: 32.718672, lng: -114.719719},
@@ -32,6 +32,30 @@ function initMap(){
        fillOpacity: 0
      });
      polygonCalifornia.setMap(map);
+
+     //Draw marker inside the map
+     var coordinatesFederalPrison =  {lat: 34.676574, 
+            lng: -120.505566};
+    var coordinatesRobertPresley =  {lat:33.9792294,
+            lng: -117.3742666};
+
+    var markerFederalPrison = new google.maps.Marker({
+    position: coordinatesFederalPrison,
+    map: map,
+    icon: {
+    url: "http://maps.google.com/mapfiles/ms/micons/police.png"
+    }
+
+    });
+
+    var markerFederalPrison = new google.maps.Marker({
+    position: coordinatesRobertPresley,
+    map: map,
+    icon: {
+    url: "http://maps.google.com/mapfiles/ms/micons/police.png"
+    }
+
+    });
 
     
     //Event to detect coordinates when the user clicks on a point
