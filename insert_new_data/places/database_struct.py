@@ -55,8 +55,6 @@ class Statistics_by_Places(BaseModel):
     Place = ForeignKeyField(Places, backref='statistics')
 
 db.connect()
-#db.create_tables([City, Statistics_by_City, Neighborhoods, 
-#                                                    Statistics_by_Neighborhood])
-
-db.create_tables([Places, Statistics_by_Places])
+db.create_tables([City, Statistics_by_City, Neighborhoods, 
+                                                    Statistics_by_Neighborhood])
 db.close()

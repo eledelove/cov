@@ -32,31 +32,6 @@ function initMap(){
        fillOpacity: 0
      });
      polygonCalifornia.setMap(map);
-
-     //Draw marker inside the map
-     var coordinatesFederalPrison =  {lat: 34.676574, 
-            lng: -120.505566};
-    var coordinatesRobertPresley =  {lat:33.9792294,
-            lng: -117.3742666};
-
-    var markerFederalPrison = new google.maps.Marker({
-    position: coordinatesFederalPrison,
-    map: map,
-    icon: {
-    url: "http://maps.google.com/mapfiles/ms/micons/police.png"
-    }
-
-    });
-
-    var markerFederalPrison = new google.maps.Marker({
-    position: coordinatesRobertPresley,
-    map: map,
-    icon: {
-    url: "http://maps.google.com/mapfiles/ms/micons/police.png"
-    }
-
-    });
-
     
     //Event to detect coordinates when the user clicks on a point
     google.maps.event.addListener(polygonCalifornia, 'click', function(event) { 

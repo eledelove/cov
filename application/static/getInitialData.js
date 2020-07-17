@@ -22,14 +22,19 @@ function startSend() {
 }
 
 function arrival(data){
+    console.log(data);
     var date = paintMessage($("#date").val());
-    console.log(date);
-    if(data.cities[0].city=="No data"){
-        alert("El servidor de base de datos no se ha actualizado a su fecha."+ 
-        " Intente buscar por otra fecha y haga clic sobre el nombre de su "+ 
-        "localidad");
+    if(data.cities[0].city=="No data" || data.last_date=="No_Last_Date"){
+        alert("Error al intentar obtener la información,"+
+        "intenta más tarde por favor");
     }
     else{
+        //Assign the minimum value for the date
+        $("#date").attr("min", '2020-05-05');
+        //Assign the maximum value for the date
+        $("#date").attr("max", data.last_date);
+        //Assign the date in the input
+        $("#date").val(data.last_date);
         //Function to draw markers
         paintPoints(map, data);
         //Get the date and day

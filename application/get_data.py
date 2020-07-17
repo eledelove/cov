@@ -2,10 +2,28 @@ import database_struct as ds
 import datetime
 import json
 
-def search_data(city, neighborhood, locality, year, month, day):
+def search_data(city, neighborhood, locality, year, month, day, address):
     
     date = datetime.date(year, month, day)
-
+ 
+    #Get data by address
+    try:
+        place = ds.Places.get(ds.Places.name.iregexp(address))
+        stat = place.statistics
+        if len(stat) != 0:
+            data_place = stat[-1]
+            response = {
+                'key':'Data',
+                'place':address,
+                'cases':data_place.cases,
+                'deaths':data_place.deaths,
+                'date':str(data_place.date)
+            }
+            return response
+    except:
+        pass
+    
+    
     #Getting data by city
     try:
         city_obj = ds.City.get(ds.City.name.iregexp(city))

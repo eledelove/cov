@@ -4,9 +4,36 @@ import json
 
 def get_data_by_date(year, month, day):
 
+    date = datetime.date(year, month, day)
+
+    list_places = []
+    #Get places and statistics
+    try:
+        places = ds.Places.select()
+        for place in places:
+            try:
+                stat = place.statistics
+                if len(stat) == 0:
+                    continue       
+                for data in stat:
+                    if data.date == date:
+                        d = {'place':place.name, 'cases':data.cases, 'deaths':data.deaths, 
+                            'latitude':place.latitude, 'longitude':place.longitude}
+                        list_places.append(d)
+                        break
+            except:
+                pass
+        if len(list_places) == 0:
+            d = {'place':'No Data'}
+            list_places.append(d)
+
+    except:
+        d = {'place':'No Data'}
+        list_places.append(d)
+
+
     list_cities = []
 
-    date = datetime.date(year, month, day)
     #Getting Statistics by city
     try:
         condados = ds.City.select()
@@ -20,9 +47,10 @@ def get_data_by_date(year, month, day):
                 list_cities.append(d)
             except:
                 pass
-            if len(list_cities) == 0:
-                d = {'county':'No Data', 'date':str(date)}
-                list_cities.append(d)
+
+        if len(list_cities) == 0:
+            d = {'county':'No Data', 'date':str(date)}
+            list_cities.append(d)
     except:
         d = {'county':'No Data', 'date':str(date)}
         list_cities.append(d)
@@ -59,5 +87,5 @@ def get_data_by_date(year, month, day):
         pass
 
     dictio={'counties':list_cities, 'cities':list_neigh, 'max_cases':max_cases, 
-                                                'second_max_cases':second_max}
+                            'second_max_cases':second_max, 'places':list_places}
     return json.dumps(dictio)

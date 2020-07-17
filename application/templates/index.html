@@ -2,6 +2,24 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
+        <meta namme="description" content="Visualización de casos de Covid-19 
+        en el Sur de California por condados, localidades, vecindarios o 
+        lugares" />
+        <meta name="keywords" content="Covid-19, California, Sur de California,
+        casos, muertes, casos de Covid-19, muertes por Covid-19, 
+        Visualización de casos, Visualización Covid-19, mapa Los Angeles,
+        Orange, Riverside, San Bernardino, Ventura, San Diego, 
+        Santa Barbara, Imperial" />
+        <meta property="og:title" content="Covid-19 Sur de California" />
+        <meta property="og:description" content="Visualización de casos de Covid-19 
+        en el Sur de California por condados, localidades, vecindarios o 
+        lugares" />
+        <meta property="og:image" content="{{ url_for('static',filename='img/surCalifornia.jpeg') }}" />
+        <meta name="twitter:title" content="Covid-19 Sur de California" />
+        <meta name="twitter:description" content="Visualización de casos de Covid-19 
+        en el Sur de California por condados, localidades, vecindarios o 
+        lugares" />
+        <meta name="twitter:image" content="{{ url_for('static',filename='img/surCalifornia.jpeg') }}" />
         <title>Covid-19 Sur de California</title>
         <link rel="stylesheet" 
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
@@ -34,6 +52,11 @@
             </div>
         </div>
         <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <h3 id="clickOver">Búsqueda por fecha específica</h3>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-sm-6 col-md-4 col-lg-4">
                     <div class="input-group input-group-sm mb-3">
@@ -87,19 +110,16 @@
         <div  id="information" title="Información">
             
         </div>
+        <script type="text/javascript" src="{{ url_for('static',filename='parsePlaces.js') }}"></script>
         <script type="text/javascript" src="{{ url_for('static',filename='getInitialData.js') }}"></script>
-        <script type="text/javascript" src="{{ url_for('static',filename='date.js') }}"></script>
         <script type="text/javascript" src="{{ url_for('static',filename='initMap.js') }}"></script>
         <script type="text/javascript" src="{{ url_for('static',filename='paintPoints.js') }}"></script>
         <script type="text/javascript" src="{{ url_for('static',filename='paintTable.js') }}"></script>
         <script type="text/javascript" src="{{ url_for('static',filename='paintMessage.js') }}"></script>
         <script type="text/javascript" src="{{ url_for('static',filename='formatNumber.js') }}"></script>
         <script type="text/javascript" src="{{ url_for('static',filename='getByDate.js') }}"></script>
-        <!-- <script async type="text/javascript"
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgtDNTNLg5xp_RD8H0R_b5KKK1NR0inQk&callback=initMap">
-        </script> -->
         <script async type="text/javascript"
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoaTfhW12RXAT_ybBrEqvCRGHse_FGmb8&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgtDNTNLg5xp_RD8H0R_b5KKK1NR0inQk&callback=initMap">
         </script>
     </body>
 </html>

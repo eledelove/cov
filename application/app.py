@@ -14,7 +14,6 @@ def hello():
 def data():
     
     response = gid.get_initial_data()
-
     return response
 
 @app.route('/get_by_date.py', methods=['POST'])
@@ -36,10 +35,12 @@ def ajx():
     year = int(request.form['year'])
     month = int(request.form['month'])
     day = int((request.form['day']))
+    address = request.form['address']
 
-    response = gd.search_data(city, neigh, locality, year, month, day)
+    response = gd.search_data(city, neigh, locality, year, month, day, address)
     
     return json.dumps(response)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host='198.12.226.233')
+    #app.run(debug=True)

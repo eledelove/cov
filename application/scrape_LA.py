@@ -26,7 +26,7 @@ def insert_data(table):
             cases_city = element[1]
         if(element[0] == 'Deaths'):
             deaths_city = element[1]
-            
+           
     try:
         city = ds.City.get(ds.City.name == 'Los Angeles')
         ds.Statistics_by_City.create(cases=cases_city,deaths=deaths_city,
@@ -38,10 +38,12 @@ def insert_data(table):
     #Inserting data into Statistics by Neighborhoods
     for element in table:
        try:
-           name_neigh = ds.Neighborhoods.get(ds.Neighborhoods.name==element[0])
+           name_aux = element[0].replace('*', '')
+           name_neigh = ds.Neighborhoods.get(ds.Neighborhoods.name==name_aux)
            cases_neigh = element[1]
+           deaths_neigh = element[3]
            ds.Statistics_by_Neighborhood.create(cases=cases_neigh, 
-                                                       neighborhood=name_neigh)
+                                deaths=deaths_neigh, neighborhood=name_neigh)
        except:
            pass
 
@@ -68,9 +70,9 @@ def los_angeles():
                 elements_of_table.append(rows)
             
             try:
-                insert_data(elements_of_table)
+               insert_data(elements_of_table)
             except:
-                print("Error around conexion to data base for L.A.")
+               print("Error around conexion to data base for L.A.")
             
 
         else:

@@ -4,9 +4,37 @@ import json
 
 def get_initial_data():
 
-    #Get all counties
+    list_places = []
+    #Get places and statistics
+    try:
+        places = ds.Places.select()
+        for place in places:
+            try:
+                stat = place.statistics
+                if len(stat) == 0:
+                    continue       
+                data = stat[-1]
+                d = {'place':place.name, 'cases':data.cases, 'deaths':data.deaths, 
+                        'latitude':place.latitude, 'longitude':place.longitude}
+                list_places.append(d)
+            except:
+                pass
+    except:
+        d = {'place':'No Data'}
+        list_places.append(d)
+    
+
     lista = []
     fechas = []
+    #Get last date
+    try:
+        l_date = ds.Statistics_by_City.select(ds.Statistics_by_City.date).order_by(ds.Statistics_by_City.date.desc()).limit(1)
+        for j in l_date:
+            fecha = str(j.date)
+    except:
+        fecha = 'No_Last_Date'
+        pass
+    #Get all counties
     try:
         counties = ds.City.select()
         #adding all data in a list
@@ -57,7 +85,9 @@ def get_initial_data():
         second_max = 'No data'
         d = {'city':'No data'}
         lista_n.append(d)
-
+    
     dictio = {'counties':lista, 'cities':lista_n, 'max_cases':num_max, 
-                                                'second_max_cases':second_max}
+        'second_max_cases':second_max, 'last_date':fecha, 'places':list_places}
+    
     return json.dumps(dictio)
+    

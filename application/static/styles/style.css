@@ -47,3 +47,12 @@ th, tr{
 .alertColor{
     color: #FF0000;
 }
+
+.encabezadoDomicilio{
+    color: #FFFFFF;
+    background-color: #378B2E;
+}
+
+.cuerpoDomicilio{
+    color: #378B2E;
+}

@@ -217,3 +217,34 @@ y otro script para actuaizar la base de datos.
 
     Si una ciudad ya existiera, y se escribiera por error en este archivo, no es 
     causa de ningun error. Sólo se ignoraría.
+
+
+* CARPETA PLACES (dentro de insert_new_data)
+
+    1. new_place.py
+    * Este script agrega a la base de datos un nuevo lugar/Domicilio especifico basta con editar o sobreescribir el archivo llamado "new_place.txt" es impor-
+    tante mantener este nombre y extension. El archivo debe construirse de la
+    siguiente manera
+
+    lugar/domicilio,latitude,longitude
+
+    EJEMPLO:
+    Home Depot,111111,222222
+
+
+    ¡NOTA: este script solo se ejecuta solo cuando se requiera agregar nuevos
+    lugares/Domicilios a la base de datos!
+
+    2. update_data.py
+    * Este script actualiza la base de datos con nueva información, para esto
+    ya debe de existir un lugar/domicilio a las cuales se les quiere
+    actualizar información. Este modulo lee el archivo "new_data.txt" Es importante
+    mantener el nombre y la extension de este archivo. La nomeclatura es la siguiente.
+
+    lugar/Domicilio,casos,muertes
+
+    Ejemplo:
+
+    Home Depot,50,3
+
+    NOTA: Este script se puede ejecutar diario para alimenatar la base de datos.
